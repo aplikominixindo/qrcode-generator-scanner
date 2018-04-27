@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [InAppBrowser]
 })
 export class HomePage {
   qrData = null;
@@ -13,8 +15,8 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public barcodeScanner: BarcodeScanner) {
-
+    public barcodeScanner: BarcodeScanner,
+    public inAppBrowser: InAppBrowser) {
   }
 
   // men-generate qrcode
@@ -30,6 +32,16 @@ export class HomePage {
       }, (error) => {
         console.log('Scan error: ', error);
       });
+  }
+
+  // redirect ke detail qrcode
+  goToDetailQrCode(){
+    const openBrowser = this.inAppBrowser.create(
+      'http://inixindosurabaya.id', // url
+      '_self',                     // target
+      'location=yes'                // options
+    );
+    openBrowser.show();
   }
 
 }

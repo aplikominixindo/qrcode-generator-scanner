@@ -22,7 +22,7 @@
   </button>
 
   <!--Generate QRCode-->
-  <ion-card *ngIf="createdQrCode">
+  <ion-card *ngIf="createdQrCode" (click)="goToDetailQrCode()">
     <ngx-qrcode [qrc-value]="createdQrCode"></ngx-qrcode>
     <ion-card-content>
       <p>Value : {{ createdQrCode }}</p>
