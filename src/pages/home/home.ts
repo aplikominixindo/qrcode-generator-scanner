@@ -37,7 +37,7 @@ export class HomePage {
   // redirect ke detail qrcode
   goToDetailQrCode(){
     const openBrowser = this.inAppBrowser.create(
-      'http://inixindosurabaya.id', // url
+      'http://inixindosurabaya.id', // url atau scannedQrCode
       '_self',                     // target
       'location=yes'                // options
     );
